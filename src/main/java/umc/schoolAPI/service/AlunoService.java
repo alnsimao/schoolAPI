@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import umc.schoolAPI.model.Aluno;
 import umc.schoolAPI.repository.AlunoRepository;
 
+import java.util.NoSuchElementException;
+
 @Service
 public class AlunoService {
 	
@@ -16,5 +18,7 @@ public class AlunoService {
 	public Aluno salvar(Aluno aluno) {
 		return alunoRepo.save(aluno);
 	}
-
+    public Aluno buscarAlunoId(long id){
+        return alunoRepo.findById(id).orElseThrow(()-> new NoSuchElementException("aluno não encontrado"));
+    }
 }
