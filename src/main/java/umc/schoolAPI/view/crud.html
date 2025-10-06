@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario do Aluno</title>
+    <title>Crud</title>
 </head>
 <body>
+    <h1>Cadastro de Alunos</h1>
     <!-- TEM QUE LINKAR COM O BACK AINDA -->
-    <h1>Formulário de Aluno</h1>
-    <form action="/alunos" method="post">
+    <h2>Criar Novo Aluno</h2>
+    <form action="/alunos/criar" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome"><br>
         <br>
@@ -36,11 +37,35 @@
         <label for="turma">Turma:</label>
         <input type="text" name="turma" id="turma"><br>
         <br>
-        <button type="submit">Enviar</button>
+        <input type="submit" value="Cadastrar">
     </form>
-    <br>
-    <form action="/alunos/editar" method="get" style="display:inline;">
+    <hr>
+    <h2>Lista de Alunos</h2>
+    <!-- Esta parte deve ser preenchida dinamicamente pelo backend em Java -->
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de Nascimento</th>
+            <th>Matrícula</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Turma</th>
+        </tr>
+            <td>
+                <form action="/alunos/editar" method="get" style="display:inline;">
                     <input type="hidden" name="id" value="1">
                     <input type="submit" value="Editar">
+                </form>
+                <form action="/alunos/deletar" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="1">
+                    <input type="submit" value="Excluir">
+                </form>
+            </td>
+        <!-- O Java deve repetir esse <tr> para cada aluno cadastrado -->
+    </table>
 </body>
 </html>
