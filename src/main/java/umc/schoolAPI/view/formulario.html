@@ -8,6 +8,7 @@
 <body>
     <!-- TEM QUE LINKAR COM O BACK AINDA -->
     <h1>Formulário de Aluno</h1>
+<div class="formulario" id="formulario">
     <form action="/alunos" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome"><br>
@@ -38,7 +39,7 @@
         <br>
         <button type="submit">Enviar</button>
     </form>
-    <br>
+</div>
     <form action="/alunos/editar" method="get" style="display:inline;">
                     <input type="hidden" name="id" value="1">
                     <input type="submit" value="Editar">

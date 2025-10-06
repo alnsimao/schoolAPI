@@ -9,6 +9,7 @@
     <h1>Cadastro de Alunos</h1>
     <!-- TEM QUE LINKAR COM O BACK AINDA -->
     <h2>Criar Novo Aluno</h2>
+<div class="formulario" id="formulario">
     <form action="/alunos/criar" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome"><br>
@@ -39,9 +40,11 @@
         <br>
         <input type="submit" value="Cadastrar">
     </form>
+</div>
     <hr>
     <h2>Lista de Alunos</h2>
     <!-- Esta parte deve ser preenchida dinamicamente pelo backend em Java -->
+<div class="lista" id-="lista">
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -67,5 +70,6 @@
             </td>
         <!-- O Java deve repetir esse <tr> para cada aluno cadastrado -->
     </table>
+</div>
 </body>
 </html>
