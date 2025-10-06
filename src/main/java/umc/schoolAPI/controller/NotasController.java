@@ -2,19 +2,36 @@ package umc.schoolAPI.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import umc.schoolAPI.model.Notas;
+import umc.schoolAPI.repository.NotasRepository;
 import umc.schoolAPI.service.NotasService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/alunos")
+@RequestMapping("/notas")
 public class NotasController {
 
     @Autowired
     private NotasService notasService;
-    @PostMapping("/{alunoId}/notas")
+    @Autowired
+    private NotasRepository notasRepository;
+    @PostMapping("/{alunoId}")
     @ResponseStatus (HttpStatus.CREATED)
     public Notas addNota(@PathVariable Long alunoId, @RequestBody Notas notas){
         return notasService.salvarNota(alunoId, notas);
+    }
+
+    @DeleteMapping("/delete/{alunoId}")
+    public ResponseEntity<Notas> deletarNotasDoAluno(@PathVariable Long alunoId) {
+        notasService.deleteNotasByAlunoIdService(alunoId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public List<Notas> listarTodasAsNotas(){
+        return notasService.listarTodasAsNotas();
     }
 }
