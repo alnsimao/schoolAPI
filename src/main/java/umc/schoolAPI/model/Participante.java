@@ -1,7 +1,6 @@
 package umc.schoolAPI.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -21,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Aluno {
+public class Participante {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
@@ -36,7 +35,7 @@ private String telefone;
 private String endereco;
 private String turma;
 
-@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@OneToMany(mappedBy = "participante", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 @JsonManagedReference
 private List<Notas> notas;
 }

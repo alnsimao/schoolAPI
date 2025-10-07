@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface NotasRepository extends JpaRepository<Notas,Long> {
     @Modifying
-    @Query("DELETE FROM Notas n WHERE n.aluno.id = :alunoId")
-    void deleteByAlunoId(@Param("alunoId") Long alunoId);
+    @Query("DELETE FROM Notas n WHERE n.participante.id = :participanteId")
+    void deleteByParticipanteId(@Param("participanteId") Long participanteId);
 
-    List<Notas> findByAlunoId(Long alunoId);
+    List<Notas> findByParticipanteId(Long participanteId);
 }

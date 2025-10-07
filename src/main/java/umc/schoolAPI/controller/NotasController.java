@@ -18,15 +18,15 @@ public class NotasController {
     private NotasService notasService;
     @Autowired
     private NotasRepository notasRepository;
-    @PostMapping("/{alunoId}")
+    @PostMapping("/{participanteId}")
     @ResponseStatus (HttpStatus.CREATED)
-    public Notas addNota(@PathVariable Long alunoId, @RequestBody Notas notas){
-        return notasService.salvarNota(alunoId, notas);
+    public Notas addNota(@PathVariable Long participanteId, @RequestBody Notas notas){
+        return notasService.salvarNota(participanteId, notas);
     }
 
-    @DeleteMapping("/delete/{alunoId}")
-    public ResponseEntity<Notas> deletarNotasDoAluno(@PathVariable Long alunoId) {
-        notasService.deleteNotasByAlunoIdService(alunoId);
+    @DeleteMapping("/delete/{participanteId}")
+    public ResponseEntity<Notas> deletarNotasDoParticipante(@PathVariable Long participanteId) {
+        notasService.deleteNotasByIdParticipanteService(participanteId);
         return ResponseEntity.noContent().build();
     }
 

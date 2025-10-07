@@ -20,7 +20,7 @@ public class Notas {
     private Double nota2;
 
     @ManyToOne
-    @JoinColumn(name = "aluno_id")
+    @JoinColumn(name = "participante_id")
     @JsonBackReference
-    private Aluno aluno;
+    private Participante participante;
 }
