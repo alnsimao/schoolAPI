@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import umc.schoolAPI.model.Participante;
 import umc.schoolAPI.repository.ParticipanteRepository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -21,6 +22,9 @@ public class ParticipanteService {
     public Participante buscarParticipanteId(long id){
         return participanteRepository.findById(id).orElseThrow(()-> new NoSuchElementException("participante não encontrado"));
     }
-
+    public List<Participante> listarTodos(){
+    	return participanteRepository.findAll();
+    	
+    }
 
 }
