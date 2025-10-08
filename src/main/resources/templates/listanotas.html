@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de todas as notas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listagem de todas as notas</title>
 </head>
 <body>
-    <div class="listanotas" id="listanotas">
-        <h1>Listagem Notas</h1>
-            <table border="1" cellpadding="5">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Nota 1</th>
-                    <th>Nota 2</th>
-                </tr>
-            </table>
+	<div class="listanotas" id="listanotas">
+		<h1>Listagem Notas</h1>
+		<table border="1" cellpadding="5">
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Sobrenome</th>
+				<th>Nota 1</th>
+				<th>Nota 2</th>
+			</tr>
+			<tr th:each="nota : ${notas}">
+				<td th:text="${nota.id}"></td>
+				<td th:text="${nota.participante.nome}"></td>
+				<td th:text="${nota.nota1}"></td>
+				<td th:text="${nota.nota2}"></td>
+				<td><a th:href="@{'/notas/editar/' + ${nota.id}}">Editar</a> <a
+					th:href="@{'/notas/deletar/' + ${nota.id}}"
+					onclick="return confirm('Deseja excluir?')">Excluir</a></td>
+			</tr>
+		</table>
 </body>
 </html>

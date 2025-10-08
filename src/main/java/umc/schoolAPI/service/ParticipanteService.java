@@ -27,4 +27,7 @@ public class ParticipanteService {
     	
     }
 
+   public void deletarPorId(long id) {
+	    participanteRepository.deleteById(id);
+   }
 }
