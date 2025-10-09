@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Participantes</title>
-    </head>
+</head>
 <body>
     <h1>Lista de Participantes</h1>
 
@@ -30,6 +30,7 @@
                     <th>Endereço</th>
                     <th>Turma</th>
                     <th>Ações</th>
+                    <th>Notas</th>
                 </tr>
             </thead>
 
@@ -45,12 +46,18 @@
                     <td th:text="${p.telefone}"></td>
                     <td th:text="${p.endereco}"></td>
                     <td th:text="${p.turma}"></td>
+                    
                     <td>
                         <a th:href="@{/participantes/editar/{id}(id=${p.id})}">Editar</a>
-                        
                         <form th:action="@{/participantes/deletar/{id}(id=${p.id})}" method="post" style="display:inline;">
                             <button type="submit" onclick="return confirm('Deseja excluir este participante?')">Excluir</button>
                         </form>
+                    </td>
+                    
+                    <td>
+                        <a th:href="@{/notas/novo(participanteId=${p.id})}">
+                            <button type="button">Adicionar Notas</button>
+                        </a>
                     </td>
                 </tr>
             </tbody>

@@ -8,23 +8,36 @@
 <body>
 	<div class="listanotas" id="listanotas">
 		<h1>Listagem Notas</h1>
+
+		<a th:href="@{/participantes}">
+			<button>← Voltar para Lista de Alunos</button>
+		</a> <a th:href="@{/notas/novo}">
+			<button>+ Adicionar Nova Nota</button>
+		</a>
+
+		<hr>
+
 		<table border="1" cellpadding="5">
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Sobrenome</th>
-				<th>Nota 1</th>
-				<th>Nota 2</th>
-			</tr>
-			<tr th:each="nota : ${notas}">
-				<td th:text="${nota.id}"></td>
-				<td th:text="${nota.participante.nome}"></td>
-				<td th:text="${nota.nota1}"></td>
-				<td th:text="${nota.nota2}"></td>
-				<td><a th:href="@{'/notas/editar/' + ${nota.id}}">Editar</a> <a
-					th:href="@{'/notas/deletar/' + ${nota.id}}"
-					onclick="return confirm('Deseja excluir?')">Excluir</a></td>
-			</tr>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome do Aluno</th>
+					<th>Nota 1</th>
+					<th>Nota 2</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="nota : ${notas}">
+					<td th:text="${nota.id}"></td>
+					<td th:text="${nota.participante.nome}"></td>
+					<td th:text="${nota.nota1}"></td>
+					<td th:text="${nota.nota2}"></td>
+
+					<td><a th:href="@{'/notas/editar/' + ${nota.id}}">Editar</a></td>
+				</tr>
+			</tbody>
 		</table>
+	</div>
 </body>
 </html>

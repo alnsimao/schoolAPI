@@ -19,9 +19,8 @@ public class NotasService {
     @Autowired
     private NotasRepository notasRepository;
 
-    public Notas salvarNota(Long participanteId, Notas notas){
-    	Participante participante = participanteService.buscarParticipanteId(participanteId);
-    	notas.setParticipante(participante);
+    public Notas salvarNota(Notas notas){
+    	
         return notasRepository.save(notas);
     }
 
@@ -45,5 +44,10 @@ public class NotasService {
     public List<Notas> listarTodasAsNotas(){
         return notasRepository.findAll();
     }
+
+	public void deletarPorId(Long id) {
+		notasRepository.deleteById(id);
+		
+	}
 
 }
