@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Notas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
     <h1 th:text="${nota.id != null} ? 'Editar Nota' : 'Cadastrar Nota'"></h1>
 
-    <form th:action="@{/notas/salvar}" th:object="${nota}" method="post">
+    <form th:action="@{/notas/salvar}" th:object="${nota}" method="post" class="form-card">
         <input type="hidden" th:field="*{id}">
 
         <label>Participante:</label>
         <select th:field="*{participante.id}" required>
-            <option th:each="p : ${participantes}" 
-                    th:value="${p.id}" 
-                    th:text="${p.nome + ' ' + p.sobrenome}">
-            </option>
-        </select><br><br>
+            <option th:each="p : ${participantes}" th:value="${p.id}" 
+                    th:text="${p.nome + ' ' + p.sobrenome}"></option>
+        </select>
 
         <label>Nota 1:</label>
-        <input type="number" step="0.1" min="0" max="10" th:field="*{nota1}" required><br><br>
+        <input type="number" step="0.1" min="0" max="10" th:field="*{nota1}" required>
 
         <label>Nota 2:</label>
-        <input type="number" step="0.1" min="0" max="10" th:field="*{nota2}" required><br><br>
+        <input type="number" step="0.1" min="0" max="10" th:field="*{nota2}" required>
 
         <button type="submit">Salvar</button>
     </form>
 
-    <a href="/notas">Voltar à lista</a>
+    <a href="/notas" class="voltar-link">Voltar à lista</a>
 </body>
 </html>

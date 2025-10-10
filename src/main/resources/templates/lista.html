@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Participantes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
     <h1>Lista de Participantes</h1>
@@ -50,7 +53,9 @@
                     <td>
                         <a th:href="@{/participantes/editar/{id}(id=${p.id})}">Editar</a>
                         <form th:action="@{/participantes/deletar/{id}(id=${p.id})}" method="post" style="display:inline;">
-                            <button type="submit" onclick="return confirm('Deseja excluir este participante?')">Excluir</button>
+                            <button type="submit" class="btn-excluir" onclick="return confirm('Deseja excluir este participante?')">
+                                <i class='bxr  bx-trash-x'  ></i> Excluir
+                            </button>
                         </form>
                     </td>
                     
