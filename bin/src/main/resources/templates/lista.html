@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Participantes</title>
+</head>
+<body>
+    <h1>Lista de Participantes</h1>
+
+    <a th:href="@{/participantes/novo}">
+        <button>+ Novo Participante</button>
+    </a>
+    
+    <hr>
+
+    <h2>Participantes Cadastrados</h2>
+    <div class="lista" id="lista">
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Matrícula</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Turma</th>
+                    <th>Ações</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="p : ${participantes}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.nome}"></td>
+                    <td th:text="${p.sobrenome}"></td>
+                    <td th:text="${p.dataNascimento}"></td>
+                    <td th:text="${p.matricula}"></td>
+                    <td th:text="${p.cpf}"></td>
+                    <td th:text="${p.email}"></td>
+                    <td th:text="${p.telefone}"></td>
+                    <td th:text="${p.endereco}"></td>
+                    <td th:text="${p.turma}"></td>
+                    
+                    <td>
+                        <a th:href="@{/participantes/editar/{id}(id=${p.id})}">Editar</a>
+                        <form th:action="@{/participantes/deletar/{id}(id=${p.id})}" method="post" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Deseja excluir este participante?')">Excluir</button>
+                        </form>
+                    </td>
+                    
+                    <td>
+                        <a th:href="@{/notas/novo(participanteId=${p.id})}">
+                            <button type="button">Adicionar Notas</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
